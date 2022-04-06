@@ -1,0 +1,8 @@
+name: TitanAsh
+version: '${project.version}'
+main: io.github.reconsolidated.titanash.TitanAsh
+api-version: 1.18
+commands:
+  titanshop:
+    description: Opens TitanShop for player
+    permission: titanshop.open
