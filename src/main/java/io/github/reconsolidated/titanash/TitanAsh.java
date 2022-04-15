@@ -45,9 +45,10 @@ public final class TitanAsh extends JavaPlugin {
         }
 
         getCommand("titanshop").setExecutor(new TitanShopCommand());
+    }
 
+    public void init() {
         itemProvider.addItem(getTitanAshItem(), "titan_ash", "titan_ash");
-
     }
 
     private ItemStack getTitanAshItem() {

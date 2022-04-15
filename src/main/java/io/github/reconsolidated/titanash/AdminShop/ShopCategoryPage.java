@@ -36,15 +36,9 @@ public class ShopCategoryPage extends InventoryMenu {
     private List<AdminShopItem> getCategoryItems(int page) {
         List<AdminShopItem> allItems;
         plugin.reloadConfig(); // todo remove this line on production
-        if (plugin.getConfig().contains("shop.titan_ash")) {
-            allItems = (List<AdminShopItem>) plugin.getConfig().getList("shop.titan_ash");
-        } else {
-            allItems = new ArrayList<>();
-            allItems.add(new AdminShopItem("BEDROCK", 10));
-            allItems.add(new AdminShopItem("WHEAT", 5));
-            plugin.getConfig().set("shop.titan_ash", allItems);
-            plugin.saveConfig();
-        }
+
+        allItems = (List<AdminShopItem>) plugin.getConfig().getList("shop.titan_ash", new ArrayList<>());
+
         int startingIndex = (page-1) * ITEMS_ON_PAGE;
         int endingIndex = page * ITEMS_ON_PAGE - 1;
         if (startingIndex >= allItems.size()) {
