@@ -16,9 +16,7 @@ public class TitanShopCommand implements CommandExecutor {
                 new ShopCategoryPage(TitanAsh.plugin, player, 1);
             }
         } else {
-            if (args[0].equalsIgnoreCase("init")) {
-                TitanAsh.plugin.init();
-            }
+
         }
 
 

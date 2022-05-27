@@ -31,6 +31,9 @@ public final class TitanAsh extends JavaPlugin {
                 && itemStack.getItemMeta().getPersistentDataContainer().get(getTitanAshKey(), PersistentDataType.INTEGER) != null;
     }
 
+    public ItemStack getTitanAsh() {
+        return itemProvider.getItem("titan_ash", "titan_ash");
+    }
 
 
     @Override
@@ -45,28 +48,10 @@ public final class TitanAsh extends JavaPlugin {
         }
 
         getCommand("titanshop").setExecutor(new TitanShopCommand());
+
+        getServer().getPluginManager().registerEvents(new GiveAshOnKill(), this);
     }
 
-    public void init() {
-        itemProvider.addItem(getTitanAshItem(), "titan_ash", "titan_ash");
-    }
-
-    private ItemStack getTitanAshItem() {
-        ItemStack item = new ItemStack(Material.GLOWSTONE_DUST);
-        item.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 1);
-        ItemMeta meta = item.getItemMeta();
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.displayName(Component.text(ColorHelper.translate("&#e91ffb&l✦ &#e127fb&lP&#d82efb&lr&#d036fb&lo&#c83dfc&lc&#bf45fc&lh " +
-                "&#b74dfc&lT&#af54fc&ly&#a75cfc&lt&#9e64fc&la&#966bfd&ln&#8e73fd&ló&#857afd&lw &#7d82fd&l✦")));
-        meta.lore(List.of(
-                Component.text("Możesz go wykorzystać u Mrocznego Kowala").color(TextColor.color(152, 195, 34)),
-                Component.text("do zakupu najpotężniejszych przedmiotów.")
-        ));
-
-        meta.getPersistentDataContainer().set(getTitanAshKey(), PersistentDataType.INTEGER, 1);
-        item.setItemMeta(meta);
-        return item;
-    }
 
     private static NamespacedKey getTitanAshKey() {
         return new NamespacedKey(plugin, "titan_ash");
