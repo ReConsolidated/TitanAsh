@@ -50,6 +50,7 @@ public final class TitanAsh extends JavaPlugin {
         getCommand("titanshop").setExecutor(new TitanShopCommand());
 
         getServer().getPluginManager().registerEvents(new GiveAshOnKill(), this);
+        getServer().getPluginManager().registerEvents(new StopAshModification(), this);
     }
 
 
